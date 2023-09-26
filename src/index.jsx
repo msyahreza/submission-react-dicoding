@@ -1,18 +1,13 @@
 /** @format */
 
 import React from "react";
-import { createRoot } from "react-dom/client";
-
-// import style
+import { createRoot } from "react-dom";
+import Header from "./components/header";
+import MakeNotes from "./components/makeNotes";
 import "./styles/style.css";
 
-const root = createRoot(document.getElementById("root"));
-root.render(
-	<div class="border-b-2 border-main-header pb-2">
-		<h1 class="font-bold text-main-header">Notes</h1>
-		<p class="font-bold text-main-header text-2xl">
-			Take your time, Take a notes
-		</p>
-		<p></p>
-	</div>
-);
+const headerRoot = createRoot(document.getElementById("Header"));
+const makeNotesRoot = createRoot(document.getElementById("MakeNotes"));
+
+headerRoot.render(<Header />);
+makeNotesRoot.render(<MakeNotes />);

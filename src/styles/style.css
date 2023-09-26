@@ -4,6 +4,39 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+	padding: 60px 150px 60px 150px;
+}
+
 h1 {
-	font-size: 48px;
+	font-size: 64px;
+}
+
+h2 {
+	font-size: 36px;
+}
+
+.custom-search-bar {
+	border: #3f4f4f;
+	box-shadow: 10px 10px #3f4f4f;
+}
+
+.custom-search-button {
+	border: 1px solid #3f4f4f;
+}
+
+@media screen and (max-width: 600px) {
+	h1 {
+		font-size: 32px;
+	}
+
+	h2 {
+		font-size: 18px;
+	}
+	body {
+		padding: 50px;
+	}
+	.container {
+		padding: 10px;
+	}
 }

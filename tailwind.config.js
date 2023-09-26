@@ -21,8 +21,17 @@ export default {
 			"gray-light": "#d3dce6",
 			"main-header": "#495C60",
 			"main-background": "#DED6C9",
+			"custom-grey-color": "#D9D9D9",
 		},
-		extend: {},
+		extend: {
+			padding: {
+				"custom-y": "60px",
+				"custom-x": "179px",
+			},
+			fontSize: {
+				"content-header": "48px",
+			},
+		},
 	},
 	plugins: [],
 };
