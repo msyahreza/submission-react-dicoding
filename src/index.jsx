@@ -1,13 +1,12 @@
 /** @format */
 
 import React from "react";
-import { createRoot } from "react-dom";
-import Header from "./components/header";
-import MakeNotes from "./components/makeNotes";
+import { createRoot } from "react-dom/client";
 import "./styles/style.css";
+import NotesApps from "./components/NotesApp";
 
-const headerRoot = createRoot(document.getElementById("Header"));
-const makeNotesRoot = createRoot(document.getElementById("MakeNotes"));
+// const headerRoot = createRoot(document.getElementById("Header"));
+const makeNotesRoot = createRoot(document.getElementById("NotesApp"));
+// const notesListRoot = createRoot(document.getElementById("NotesList"));
 
-headerRoot.render(<Header />);
-makeNotesRoot.render(<MakeNotes />);
+makeNotesRoot.render(<NotesApps />);
