@@ -13,6 +13,7 @@ export default {
 	theme: {
 		colors: {
 			blue: "#1fb6ff",
+			red: "red",
 			pink: "#ff49db",
 			orange: "#ff7849",
 			green: "#13ce66",

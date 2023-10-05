@@ -26,16 +26,23 @@ class NotesApps extends React.Component {
 	onAddNoteHandler({ title, body }) {
 		const createdAt = showFormattedDate(new Date());
 		this.setState((prevState) => {
+			const lastId = prevState.notes.reduce((maxId, note) => {
+				return note.id > maxId ? note.id : maxId;
+			}, 0);
+			const newNote = {
+				archived : false,
+				id: lastId + 1,
+				title,
+				body,
+				createdAt: new Date().toISOString(),
+			};
+
+			const updatedNotes = [...prevState.notes, newNote];
+
+			console.log("Updated Notes:", updatedNotes); // Log the updated notes data
+
 			return {
-				contacts: [
-					...prevState.contacts,
-					{
-						id: +new Date(),
-						title,
-						body,
-						createdAt,
-					},
-				],
+				notes: updatedNotes,
 			};
 		});
 	}

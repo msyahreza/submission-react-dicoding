@@ -9,6 +9,7 @@ class MakeNotes extends React.Component {
 		this.state = {
 			title: "",
 			body: "",
+			isMaxLengthReached: false,
 		};
 
 		this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
@@ -17,9 +18,13 @@ class MakeNotes extends React.Component {
 	}
 
 	onTitleChangeEventHandler(event) {
+		const title = event.target.value;
+
+		const isMaxLengthReached = title.length > 50
 		this.setState(() => {
 			return {
-				Title: event.target.value,
+				title: event.target.value,
+				isMaxLengthReached,
 			};
 		});
 	}
@@ -27,7 +32,7 @@ class MakeNotes extends React.Component {
 	onBodyChangeEventHandler(event) {
 		this.setState(() => {
 			return {
-				Body: event.target.value,
+				body: event.target.value,
 			};
 		});
 	}
@@ -52,8 +57,12 @@ class MakeNotes extends React.Component {
 								aria-label="Title"
 								aria-describedby="button-addon1"
 								value={this.state.title}
+								maxLength={50}
 								onChange={this.onTitleChangeEventHandler}
 							/>
+							{this.state.isMaxLengthReached && (
+								<div className="popup p-2"><p className="font-bold text-red">Max Length Reached</p></div>
+							)}
 						</div>
 					</div>
 				</div>
@@ -75,7 +84,7 @@ class MakeNotes extends React.Component {
 				<div className="flex justify-end py-4">
 					<button
 						className="create-button relative z-[2] flex items-center bg-primary px-6 py-2.5"
-						type="button"
+						type="submit"
 						placeholder="create"
 						id="button-addon1"
 					>
