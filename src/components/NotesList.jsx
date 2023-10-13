@@ -11,7 +11,7 @@ function NotesList({ notes, onDelete }) {
 	return (
 		<>
 			{notes.map((notes) => (
-				<NoteItem key={notes.id} id={notes.id} {...notes} />
+				<NoteItem key={notes.id} id={notes.id} onDelete={onDelete} {...notes} />
 			))}
 		</>
 	);

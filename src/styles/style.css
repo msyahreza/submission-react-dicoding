@@ -41,6 +41,7 @@ h2 {
 }
 
 .delete-notes-button {
+	box-shadow: 10px 10px #3f4f4f;
 	border: 2px solid #3f4f4f;
 	background-color: red;
 	color: white;
@@ -48,8 +49,9 @@ h2 {
 }
 
 .archive-notes-button {
+	box-shadow: 10px 10px #3f4f4f;
 	border: 2px solid #3f4f4f;
-	background-color: #495C60;
+	background-color: #3f4f4f;
 	color: white;
 	font-weight: bold;
 }

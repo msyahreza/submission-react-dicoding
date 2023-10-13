@@ -19,8 +19,8 @@ class NotesApps extends React.Component {
 	}
 
 	onDeleteHandler(id) {
-		const contacts = this.state.contacts.filter((contact) => contact.id !== id);
-		this.setState({ contacts });
+		const notes = this.state.contacts.filter((notes) => notes.id !== id);
+		this.setState({ notes });
 	}
 
 	onAddNoteHandler({ title, body }) {
@@ -30,7 +30,7 @@ class NotesApps extends React.Component {
 				return note.id > maxId ? note.id : maxId;
 			}, 0);
 			const newNote = {
-				archived : false,
+				archived: false,
 				id: lastId + 1,
 				title,
 				body,
@@ -54,7 +54,7 @@ class NotesApps extends React.Component {
 				<MakeNotes addNotes={this.onAddNoteHandler} />
 				<h1 className="font-bold text-main-header">Your Note's</h1>
 				<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
-					<NotesList notes={this.state.notes} />
+					<NotesList notes={this.state.notes} onDelete={this.onDeleteHandler} />
 				</div>
 			</>
 		);
