@@ -6,8 +6,8 @@ import CardBody from "./CardBody";
 import CardDate from "./CardDate";
 import { showFormattedDate } from "../utils";
 import DeleteButton from "./DeleteButton";
-import ArchiveButton from "./ArchiveButton.JSX";
-import UnArchiveButton from "./UnArchiveButton.JSX";
+import ArchiveButton from "./ArchiveButton";
+import UnArchiveButton from "./UnArchiveButton";
 
 function NoteItem({
 	title,
