@@ -4,7 +4,7 @@
 
 import React from "react";
 import "../styles/style.css";
-import NoteItem from "./noteItem";
+import NoteItem from "./NoteItem";
 // import NotesListComponent from "./notesComponent";
 
 function NotesList({ notes, onDelete, onArchive, onUnArchive }) {

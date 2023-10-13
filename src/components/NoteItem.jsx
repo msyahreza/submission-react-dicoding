@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import CardTitle from "./cardTitle";
+import CardTitle from "./CardTitle";
 import CardBody from "./CardBody";
 import CardDate from "./CardDate";
 import { showFormattedDate } from "../utils";
