@@ -2,7 +2,7 @@
 
 import React from "react";
 import "../styles/style.css";
-import Header from "./Header";
+import Header from "./header";
 import { getInitialData, showFormattedDate } from "../utils";
 import MakeNotes from "./makeNotesComponent";
 import NotesList from "./notesList";
@@ -86,7 +86,7 @@ class NotesApps extends React.Component {
 	render() {
 		const unArchiveNotes = this.state.notes.filter((note) => !note.archived);
 		const archivedNotes = this.state.notes.filter((note) => note.archived);
-		
+
 		return (
 			<>
 				<Header />
