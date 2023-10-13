@@ -10,6 +10,7 @@ function DeleteButton({ id, onDelete }) {
 				type="submit"
 				placeholder="DELETE"
 				id="button-addon1"
+				onClick={() => onDelete(id)}
 			>
 				DELETE
 			</button>

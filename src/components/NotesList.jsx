@@ -7,11 +7,19 @@ import "../styles/style.css";
 import NoteItem from "./noteItem";
 // import NotesListComponent from "./notesComponent";
 
-function NotesList({ notes, onDelete }) {
+function NotesList({ notes, onDelete, onArchive, onUnArchive }) {
+	console.log(notes);
 	return (
 		<>
 			{notes.map((notes) => (
-				<NoteItem key={notes.id} id={notes.id} onDelete={onDelete} {...notes} />
+				<NoteItem
+					key={notes.id}
+					id={notes.id}
+					onDelete={onDelete}
+					{...notes}
+					onArchive={onArchive}
+					onUnArchive={onUnArchive}
+				/>
 			))}
 		</>
 	);

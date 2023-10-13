@@ -15,11 +15,48 @@ class NotesApps extends React.Component {
 
 		this.onDeleteHandler = this.onDeleteHandler.bind(this);
 		this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
+		this.onArchiveHandler = this.onArchiveHandler.bind(this);
+		this.onUnArchiveHandler = this.onUnArchiveHandler.bind(this);
 	}
 
 	onDeleteHandler(id) {
-		const notes = this.state.contacts.filter((notes) => notes.id !== id);
+		const notes = this.state.notes.filter((notes) => notes.id !== id);
 		this.setState({ notes });
+	}
+
+	onArchiveHandler(id) {
+		this.setState((prevState) => {
+			const updatedNotes = prevState.notes.map((note) => {
+				if (note.id === id) {
+					return { ...note, archived: true };
+				}
+				return note;
+			});
+
+			console.log("Updated Notes:", updatedNotes);
+
+			return {
+				notes: updatedNotes,
+			};
+		});
+		//window.location.href = "/archive";
+	}
+
+	onUnArchiveHandler(id) {
+		this.setState((prevState) => {
+			const updatedNotes = prevState.notes.map((note) => {
+				if (note.id === id) {
+					return { ...note, archived: false };
+				}
+				return note;
+			});
+
+			console.log("Updated Notes:", updatedNotes);
+
+			return {
+				notes: updatedNotes,
+			};
+		});
 	}
 
 	onAddNoteHandler({ title, body }) {
@@ -47,13 +84,29 @@ class NotesApps extends React.Component {
 	}
 
 	render() {
+		const unArchiveNotes = this.state.notes.filter((note) => !note.archived);
+		const archivedNotes = this.state.notes.filter((note) => note.archived);
+		
 		return (
 			<>
 				<Header />
 				<MakeNotes addNotes={this.onAddNoteHandler} />
 				<h1 className="font-bold text-main-header">Your Note's</h1>
 				<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
-					<NotesList notes={this.state.notes} onDelete={this.onDeleteHandler} />
+					<NotesList
+						notes={unArchiveNotes}
+						onDelete={this.onDeleteHandler}
+						onArchive={this.onArchiveHandler}
+					/>
+				</div>
+				<br />
+				<h1 className="font-bold text-main-header">Archived Note's</h1>
+				<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
+					<NotesList
+						notes={archivedNotes}
+						onDelete={this.onDeleteHandler}
+						onUnArchive={this.onUnArchiveHandler}
+					/>
 				</div>
 			</>
 		);

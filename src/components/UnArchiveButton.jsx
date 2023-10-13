@@ -2,7 +2,7 @@
 
 import React from "react";
 
-function ArchiveButton({ id, onArchive }) {
+function UnArchiveButton({ id, onUnArchive }) {
 	return (
 		<>
 			<button
@@ -10,11 +10,12 @@ function ArchiveButton({ id, onArchive }) {
 				type="submit"
 				placeholder="ARCHIVE"
 				id="button-addon1"
-				onClick={() => onArchive(id)}
+				onClick={() => onUnArchive(id)}
 			>
-				ARCHIVE
+				UNARCHIVE
 			</button>
 		</>
 	);
 }
-export default ArchiveButton;
+
+export default UnArchiveButton;
