@@ -4,8 +4,8 @@ import React from "react";
 import "../styles/style.css";
 import Header from "./header";
 import { getInitialData, showFormattedDate } from "../utils";
-import MakeNotes from "./makeNotesComponent";
 import NotesList from "./NotesList";
+import MakeNotes from "./makeNotesComponent";
 class NotesApps extends React.Component {
 	constructor(props) {
 		super(props);
