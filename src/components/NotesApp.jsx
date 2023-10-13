@@ -5,7 +5,7 @@ import "../styles/style.css";
 import Header from "./header";
 import { getInitialData, showFormattedDate } from "../utils";
 import MakeNotes from "./makeNotesComponent";
-import NotesList from "./notesList";
+import NotesList from "./NotesList";
 class NotesApps extends React.Component {
 	constructor(props) {
 		super(props);
