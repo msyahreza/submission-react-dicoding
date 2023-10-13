@@ -6,7 +6,6 @@ import Header from "./Header";
 import { getInitialData, showFormattedDate } from "../utils";
 import MakeNotes from "./makeNotesComponent";
 import NotesList from "./notesList";
-
 class NotesApps extends React.Component {
 	constructor(props) {
 		super(props);

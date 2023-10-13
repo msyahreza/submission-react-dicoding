@@ -4,8 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+#main-content {
 	padding: 60px 150px 60px 150px;
+}
+
+footer {
+	padding: 0;
 }
 
 h1 {
@@ -60,6 +64,11 @@ h2 {
 	border: 1px solid #3f4f4f;
 }
 
+.footer-page {
+	background-color: #3f4f4f;
+	color: white;
+}
+
 @media screen and (max-width: 768px) {
 	h1 {
 		font-size: 32px;
@@ -73,6 +82,9 @@ h2 {
 	}
 	.container {
 		padding: 10px;
+	}
+	#notes-card-list {
+		padding: 50px, 50px, 50px, 50px;
 	}
 	#notes-title-text {
 		font-size: 28px;
