@@ -12,7 +12,7 @@ function NotesList({ notes, onDelete, onArchive, onUnArchive }) {
 	return (
 		<>
 			{notes.map((notes) => (
-				<div className="notes my-3" key={notes.id} id={`notes-${notes.id}`}>
+				<div className="notes sm:my-5" key={notes.id} id={`notes-${notes.id}`}>
 					<NoteItem
 						key={notes.id}
 						id={notes.id}
