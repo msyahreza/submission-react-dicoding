@@ -80,7 +80,7 @@ class NotesApps extends React.Component {
 				if (lastNoteElement) {
 					lastNoteElement.scrollIntoView({ behavior: "smooth" });
 				}
-			}, 0);
+			}, 100);
 
 			console.log("Updated Notes:", updatedNotes); // Log the updated notes data
 
