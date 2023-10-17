@@ -6,7 +6,6 @@ import NoteItem from "./NoteItem";
 // import NotesListComponent from "./notesComponent";
 
 function NotesList({ notes, onDelete, onArchive, onUnArchive }) {
-	console.log(notes);
 	return (
 		<>
 			{notes.map((notes) => (

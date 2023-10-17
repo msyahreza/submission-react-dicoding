@@ -45,7 +45,6 @@ class MakeNotes extends React.Component {
 		// if (noteListSection) {
 		// 	noteListSection.scrollIntoView({ behavior: "smooth" });
 		// }
-		console.log(`onSubmitEventHandler_berjalan`);
 	}
 
 	render() {

@@ -34,8 +34,6 @@ class NotesApps extends React.Component {
 				return note;
 			});
 
-			console.log("Updated Notes:", updatedNotes);
-
 			return {
 				notes: updatedNotes,
 			};
@@ -50,8 +48,6 @@ class NotesApps extends React.Component {
 				}
 				return note;
 			});
-
-			console.log("Updated Notes:", updatedNotes);
 
 			return {
 				notes: updatedNotes,
@@ -81,9 +77,6 @@ class NotesApps extends React.Component {
 					lastNoteElement.scrollIntoView({ behavior: "smooth" });
 				}
 			}, 100);
-
-			console.log("Updated Notes:", updatedNotes); // Log the updated notes data
-
 			return {
 				notes: updatedNotes,
 			};
@@ -91,8 +84,32 @@ class NotesApps extends React.Component {
 	}
 
 	onSearchHandler({ searchNotes }) {
-		this.setState({ searchQuery: searchNotes });
-		console.log("Search berjalan");
+		const noteData = this.state.notes;
+		const filteredSearch = noteData.filter((note) => {
+			if (note && note.title && searchNotes) {
+				return (
+					note.archived &&
+					note.title.toLowerCase().includes(searchNotes.toLowerCase())
+				);
+			}
+			return false;
+		});
+		this.setState({ searchQuery: searchNotes }, () => {
+			setTimeout(() => {
+				if (filteredSearch.filter((note) => note.archived === false)) {
+					const lastFilteredNote = document.getElementById("NoteList");
+					if (lastFilteredNote) {
+						lastFilteredNote.scrollIntoView({ behavior: "smooth" });
+					}
+				} else if (filteredSearch.filter((note) => note.archived === true)) {
+					const lastFilteredNote = document.getElementById("ArchivedNotes");
+					if (lastFilteredNote) {
+						lastFilteredNote.scrollIntoView({ behavior: "smooth" });
+					}
+				}
+			}, 100);
+		});
+		console.log(filteredSearch);
 	}
 
 	render() {
@@ -104,7 +121,6 @@ class NotesApps extends React.Component {
 				searchQuery &&
 				note.title.toLowerCase().includes(searchQuery.toLowerCase())
 		);
-		console.log("filteredNotes" + filteredNotes);
 		const unArchiveNotes = this.state.notes.filter((note) => !note.archived);
 		const archivedNotes = this.state.notes.filter((note) => note.archived);
 
@@ -114,22 +130,30 @@ class NotesApps extends React.Component {
 				<section id="MakeNotes">
 					<MakeNotes addNotes={this.onAddNoteHandler} />
 				</section>
-				<section id="NoteList" className="note-list">
+				<section id="NoteList" className="note-list" ref={this.noteListRef}>
 					<h1 className="font-bold text-main-header">Your Note's</h1>
 					<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
 						<NotesList
-							notes={searchQuery ? filteredNotes : unArchiveNotes}
+							notes={
+								searchQuery
+									? filteredNotes.filter((note) => note.archived === false)
+									: unArchiveNotes
+							}
 							onDelete={this.onDeleteHandler}
 							onArchive={this.onArchiveHandler}
 						/>
 					</div>
 				</section>
 				<br />
-				<section id="ArchivedNotes">
+				<section id="ArchivedNotes" ref={this.archivedNotesRef}>
 					<h1 className="font-bold text-main-header">Archived Note's</h1>
 					<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
 						<NotesList
-							notes={searchQuery ? filteredNotes : archivedNotes}
+							notes={
+								searchQuery
+									? filteredNotes.filter((note) => note.archived === true)
+									: archivedNotes
+							}
 							onDelete={this.onDeleteHandler}
 							onUnArchive={this.onUnArchiveHandler}
 						/>

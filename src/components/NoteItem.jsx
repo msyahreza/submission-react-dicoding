@@ -20,7 +20,6 @@ function NoteItem({
 	archive,
 }) {
 	const formattedDate = showFormattedDate(createdAt);
-	console.log(archive);
 	return (
 		<div className="max-w-sm gap-3 p-6 my-2 notes-card" id="notes-card-list">
 			<CardTitle title={title} />
