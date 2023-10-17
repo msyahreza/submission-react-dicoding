@@ -63,7 +63,9 @@ h2 {
 .custom-search-button {
 	border: 1px solid #3f4f4f;
 }
-
+#Footer-section {
+	background-color: #3f4f4f;
+}
 .footer-page {
 	background-color: #3f4f4f;
 	color: white;
@@ -71,21 +73,28 @@ h2 {
 
 @media screen and (max-width: 768px) {
 	h1 {
-		font-size: 32px;
+		font-size: 24px;
 	}
 
 	h2 {
 		font-size: 18px;
 	}
 	body {
-		padding: 50px;
+		padding: 0px;
 	}
+	#main-content {
+		padding: 20px;
+	}
+	/* #Footer {
+		padding: 20px;
+	} */
 	.container {
 		padding: 10px;
 	}
 	#notes-card-list {
-		padding: 50px, 50px, 50px, 50px;
+		padding: 20px;
 	}
+
 	#notes-title-text {
 		font-size: 28px;
 	}

@@ -26,8 +26,8 @@ export default {
 		},
 		extend: {
 			padding: {
-				"custom-y": "60px",
-				"custom-x": "179px",
+				"custom-y": "20px",
+				"custom-x": "20px",
 			},
 			fontSize: {
 				"content-header": "48px",
