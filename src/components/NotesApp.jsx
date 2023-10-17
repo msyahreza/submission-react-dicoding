@@ -17,6 +17,7 @@ class NotesApps extends React.Component {
 		this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
 		this.onArchiveHandler = this.onArchiveHandler.bind(this);
 		this.onUnArchiveHandler = this.onUnArchiveHandler.bind(this);
+		this.onSearchHandler = this.onSearchHandler.bind(this);
 	}
 
 	onDeleteHandler(id) {
@@ -39,7 +40,6 @@ class NotesApps extends React.Component {
 				notes: updatedNotes,
 			};
 		});
-		//window.location.href = "/archive";
 	}
 
 	onUnArchiveHandler(id) {
@@ -90,13 +90,27 @@ class NotesApps extends React.Component {
 		});
 	}
 
+	onSearchHandler({ searchNotes }) {
+		this.setState({ searchQuery: searchNotes });
+		console.log("Search berjalan");
+	}
+
 	render() {
+		const { notes, searchQuery } = this.state;
+		const filteredNotes = notes.filter(
+			(note) =>
+				note &&
+				note.title &&
+				searchQuery &&
+				note.title.toLowerCase().includes(searchQuery.toLowerCase())
+		);
+		console.log("filteredNotes" + filteredNotes);
 		const unArchiveNotes = this.state.notes.filter((note) => !note.archived);
 		const archivedNotes = this.state.notes.filter((note) => note.archived);
 
 		return (
 			<>
-				<Header />
+				<Header searchNotes={this.onSearchHandler} />
 				<section id="MakeNotes">
 					<MakeNotes addNotes={this.onAddNoteHandler} />
 				</section>
@@ -104,7 +118,7 @@ class NotesApps extends React.Component {
 					<h1 className="font-bold text-main-header">Your Note's</h1>
 					<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
 						<NotesList
-							notes={unArchiveNotes}
+							notes={searchQuery ? filteredNotes : unArchiveNotes}
 							onDelete={this.onDeleteHandler}
 							onArchive={this.onArchiveHandler}
 						/>
@@ -115,7 +129,7 @@ class NotesApps extends React.Component {
 					<h1 className="font-bold text-main-header">Archived Note's</h1>
 					<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
 						<NotesList
-							notes={archivedNotes}
+							notes={searchQuery ? filteredNotes : archivedNotes}
 							onDelete={this.onDeleteHandler}
 							onUnArchive={this.onUnArchiveHandler}
 						/>

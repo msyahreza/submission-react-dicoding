@@ -3,19 +3,24 @@
 import React from "react";
 import "../styles/style.css";
 import SearchBar from "./searchHeader";
-
-// const root = createRoot(document.getElementById("Header"));
-// root.render(
-// 	<div className="pb-2 border-b-2 border-main-header">
-// 		<h1 className="font-bold text-main-header">Note's</h1>
-// 		<h2 className="text-2xl font-bold text-main-header">
-// 			Take your time, Take a notes
-// 		</h2>
-// 		<p></p>
-// 	</div>
-// );
-
 class Header extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			searchNotes: "",
+		};
+	}
+
+	handleSearchChange = (e) => {
+		this.setState({ searchNotes: e.target.value });
+	};
+
+	sendSearchQuery = () => {
+		const { searchNotes } = this.state;
+		this.props.searchNotes({ searchNotes });
+	};
+
 	render() {
 		return (
 			<div className="items-center pb-2 border-b-2 border-main-header md:flex md:justify-between">
@@ -27,7 +32,11 @@ class Header extends React.Component {
 					<p></p>
 				</div>
 				<div className="md:w-4/12">
-					<SearchBar />
+					<SearchBar
+						value={this.state.searchNotes}
+						onChange={this.handleSearchChange}
+						onSubmit={this.sendSearchQuery}
+					/>
 				</div>
 			</div>
 		);
