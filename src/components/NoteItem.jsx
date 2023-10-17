@@ -22,7 +22,7 @@ function NoteItem({
 	const formattedDate = showFormattedDate(createdAt);
 	console.log(archive);
 	return (
-		<div className="max-w-sm gap-3 p-6 notes-card" id="notes-card-list">
+		<div className="max-w-sm gap-3 p-6 my-2 notes-card" id="notes-card-list">
 			<CardTitle title={title} />
 			<CardDate createdAt={formattedDate} />
 			<CardBody body={body} />
