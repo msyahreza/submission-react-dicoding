@@ -98,5 +98,8 @@ h2 {
 	#notes-title-text {
 		font-size: 28px;
 	}
-
+	#notesItemList {
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+	}
 }
