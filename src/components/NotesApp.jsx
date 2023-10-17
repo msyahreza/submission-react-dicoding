@@ -61,6 +61,7 @@ class NotesApps extends React.Component {
 
 	onAddNoteHandler({ title, body }) {
 		const createdAt = showFormattedDate(new Date());
+		const noteListSection = document.getElementById("NoteList");
 		this.setState((prevState) => {
 			const lastId = prevState.notes.reduce((maxId, note) => {
 				return note.id > maxId ? note.id : maxId;
@@ -74,6 +75,12 @@ class NotesApps extends React.Component {
 			};
 
 			const updatedNotes = [...prevState.notes, newNote];
+			setTimeout(() => {
+				const lastNoteElement = document.getElementById(`notes-${newNote.id}`);
+				if (lastNoteElement) {
+					lastNoteElement.scrollIntoView({ behavior: "smooth" });
+				}
+			}, 0);
 
 			console.log("Updated Notes:", updatedNotes); // Log the updated notes data
 
@@ -90,24 +97,30 @@ class NotesApps extends React.Component {
 		return (
 			<>
 				<Header />
-				<MakeNotes addNotes={this.onAddNoteHandler} />
-				<h1 className="font-bold text-main-header">Your Note's</h1>
-				<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
-					<NotesList
-						notes={unArchiveNotes}
-						onDelete={this.onDeleteHandler}
-						onArchive={this.onArchiveHandler}
-					/>
-				</div>
+				<section id="MakeNotes">
+					<MakeNotes addNotes={this.onAddNoteHandler} />
+				</section>
+				<section id="NoteList" className="note-list">
+					<h1 className="font-bold text-main-header">Your Note's</h1>
+					<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
+						<NotesList
+							notes={unArchiveNotes}
+							onDelete={this.onDeleteHandler}
+							onArchive={this.onArchiveHandler}
+						/>
+					</div>
+				</section>
 				<br />
-				<h1 className="font-bold text-main-header">Archived Note's</h1>
-				<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
-					<NotesList
-						notes={archivedNotes}
-						onDelete={this.onDeleteHandler}
-						onUnArchive={this.onUnArchiveHandler}
-					/>
-				</div>
+				<section id="ArchivedNotes">
+					<h1 className="font-bold text-main-header">Archived Note's</h1>
+					<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
+						<NotesList
+							notes={archivedNotes}
+							onDelete={this.onDeleteHandler}
+							onUnArchive={this.onUnArchiveHandler}
+						/>
+					</div>
+				</section>
 			</>
 		);
 	}

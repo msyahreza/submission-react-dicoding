@@ -20,7 +20,7 @@ class MakeNotes extends React.Component {
 	onTitleChangeEventHandler(event) {
 		const title = event.target.value;
 
-		const isMaxLengthReached = title.length > 50
+		const isMaxLengthReached = title.length > 50;
 		this.setState(() => {
 			return {
 				title: event.target.value,
@@ -38,14 +38,23 @@ class MakeNotes extends React.Component {
 	}
 
 	onSubmitEventHandler(event) {
+		// const noteListSection = document.getElementById("NoteList");
+
 		event.preventDefault();
 		this.props.addNotes(this.state);
+		// if (noteListSection) {
+		// 	noteListSection.scrollIntoView({ behavior: "smooth" });
+		// }
 		console.log(`onSubmitEventHandler_berjalan`);
 	}
 
 	render() {
 		return (
-			<form className="notes-input" onSubmit={this.onSubmitEventHandler}>
+			<form
+				className="notes-input"
+				onSubmit={this.onSubmitEventHandler}
+				id="createForm"
+			>
 				<h1 className="font-bold text-main-header">Make Note's</h1>
 				<div className="py-4">
 					<div className="custom-search-bar" id="Notes-Title">
@@ -61,7 +70,9 @@ class MakeNotes extends React.Component {
 								onChange={this.onTitleChangeEventHandler}
 							/>
 							{this.state.isMaxLengthReached && (
-								<div className="popup p-2"><p className="font-bold text-red">Max Length Reached</p></div>
+								<div className="popup p-2">
+									<p className="font-bold text-red">Max Length Reached</p>
+								</div>
 							)}
 						</div>
 					</div>
