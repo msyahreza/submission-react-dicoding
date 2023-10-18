@@ -20,6 +20,10 @@ h2 {
 	font-size: 36px;
 }
 
+h3 {
+	font-size: 18px;
+}
+
 .custom-search-bar {
 	border: #3f4f4f;
 	box-shadow: 10px 10px #3f4f4f;
@@ -79,6 +83,10 @@ h2 {
 	h2 {
 		font-size: 18px;
 	}
+	h3 {
+		font-size: 9px;
+	}
+
 	body {
 		padding: 0px;
 	}

@@ -132,32 +132,44 @@ class NotesApps extends React.Component {
 				</section>
 				<section id="NoteList" className="note-list" ref={this.noteListRef}>
 					<h1 className="font-bold text-main-header">Your Note's</h1>
-					<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
-						<NotesList
-							notes={
-								searchQuery
-									? filteredNotes.filter((note) => note.archived === false)
-									: unArchiveNotes
-							}
-							onDelete={this.onDeleteHandler}
-							onArchive={this.onArchiveHandler}
-						/>
-					</div>
+					{unArchiveNotes.length > 0 ? (
+						<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
+							<NotesList
+								notes={
+									searchQuery
+										? filteredNotes.filter((note) => note.archived === false)
+										: unArchiveNotes
+								}
+								onDelete={this.onDeleteHandler}
+								onArchive={this.onArchiveHandler}
+							/>
+						</div>
+					) : (
+						<h3 className="font-bold text-main-header text-center my-10">
+							There's no notes right now, let's make some.
+						</h3>
+					)}
 				</section>
 				<br />
 				<section id="ArchivedNotes" ref={this.archivedNotesRef}>
 					<h1 className="font-bold text-main-header">Archived Note's</h1>
-					<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
-						<NotesList
-							notes={
-								searchQuery
-									? filteredNotes.filter((note) => note.archived === true)
-									: archivedNotes
-							}
-							onDelete={this.onDeleteHandler}
-							onUnArchive={this.onUnArchiveHandler}
-						/>
-					</div>
+					{archivedNotes.length > 0 ? (
+						<div className="flex-wrap gap-4 my-5 flex-grow-2 lg:flex">
+							<NotesList
+								notes={
+									searchQuery
+										? filteredNotes.filter((note) => note.archived === true)
+										: archivedNotes
+								}
+								onDelete={this.onDeleteHandler}
+								onUnArchive={this.onUnArchiveHandler}
+							/>
+						</div>
+					) : (
+						<h3 className="font-bold text-main-header text-center my-10">
+							There's no archived notes right now
+						</h3>
+					)}
 				</section>
 			</>
 		);
